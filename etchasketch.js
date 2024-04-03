@@ -1,30 +1,16 @@
-//* Create a 16 by 16 grid *//
+const SketchArea = document.querySelector("#sketch-area");     //Define sketch area
 
-const SIDE = 600;
-let row = 16;
-let col = 16;
+//Create a 16x16 grid //
 
-const sketchArea = document.querySelector("#sketch-area");   //*Creates 600 by 600 sketch area*//
-sketchArea.style.width = `${SIDE}px`;
-sketchArea.style.height = `${SIDE}px`;
-
-//**Changes Cell Color */
-function setBackgroundColor() {
-  this.style.backgroundColor = "black";
+function createGrid() {
+  for (let i=1; i<=256; i++) {                     //This loop creates 256 divs.
+    const box = document.createElement("div")
+    box.style.width=box.style.height="37.5px"  /// 600/16=37.5
+    box.classList.add("box")
+    SketchArea.appendChild(box);
+}
 }
 
-//**Creates the cells with a for loop*//
-function createGridCells() {
-  for (let i =0; i < (row*col); i++) {
-    const gridCell = document.createElement("div")
-    gridCell.style.width = `${(SIDE/col) -2}px`;
-    gridCell.style.height = `${(SIDE/row) -2}px`;
-    gridCell.classList.add("cell");
+createGrid()
 
-    sketchArea.appendChild(gridCell);
-
-    gridCell.addEventListener("mouseover", setBackgroundColor)
-  }
-}
-
-createGridCells()
+//Create a black pixelated trail //
