@@ -1,17 +1,22 @@
-* { border: black solid 1px}
 
 #sketch-area {
-    display:flex;
+    display: flex;
     flex-wrap:wrap;
+    margin: 100px auto;
+    border: whitesmoke solid 1px;
     width: 600px;
     height: 600px;
-    margin: 100px auto;
+    background-color: white;
 }
 
-.box {border: black solid 1px;
-    box-sizing: border-box;  /**actual width and height**/
-}
+.box {border: whitesmoke solid 1px;
+    box-sizing: border-box;} /**actual width and height**/
 
 h1 {
     text-align:center;
+    color: rosybrown;
+    font-size: 40px;}
+
+body {
+    background-color:lavenderblush;
 }
