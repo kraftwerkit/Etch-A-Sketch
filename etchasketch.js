@@ -18,7 +18,7 @@ function createGrid(side) {
 }
 }
 
-createGrid(16)
+createGrid(16) //Call the function, generate a 16x16 grid by default.
 
 
 //Create an array for colors used in trail
@@ -31,3 +31,28 @@ function rainbow() {
        return pretty[Math.floor(Math.random()*pretty.length)];
    }
   }
+
+//Asks the user for a grid size //
+//Focus on removing the grid for now
+function deleteGrid() {
+  newside= parseInt(prompt("Enter grid size"))
+  if (newside >= 1 && newside <=100) {
+    {   //remove all children from an element
+      const allDiv = document.querySelectorAll(".box"); //review code here.
+      allDiv.forEach((allDiv)=> {
+        allDiv.remove();            
+      })
+  }}
+  else {
+
+    alert("That is not a valid value!") //insert code here that would loop to prompt again
+  }
+}
+
+//after we remove the grid, call createGrid()
+
+const Button = document.querySelector("#new-grid")
+Button.addEventListener("click", () => {
+  deleteGrid();
+  createGrid(newside)
+})
