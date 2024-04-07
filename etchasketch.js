@@ -32,27 +32,28 @@ function rainbow() {
    }
   }
 
-//Asks the user for a grid size //
-//Focus on removing the grid for now
+//Function to delete existing grid//
 function deleteGrid() {
-  newside= parseInt(prompt("Enter grid size"))
-  if (newside >= 1 && newside <=100) {
-    {   //remove all children from an element
-      const allDiv = document.querySelectorAll(".box"); //review code here.
-      allDiv.forEach((allDiv)=> {
-        allDiv.remove();            
-      })
-  }}
-  else {
+  do {
+    newside = parseInt(prompt("Enter a number between 1 and 100", 16));
+  } while (((newside>100 || newside <1) && newside) || (newside==0)); 
+  // Loop runs when content evaluates to TRUE.
+  // && num to break the loop if user gives non zero input.
+  // num==0 to return true if the user inputs 0 FALSE || TRUE evaluates to TRUE.
+  // Check && num is false when num is null (cancel) or an empty string. Stops the while loop.
+  // I still need to account for weird strings like agkhldfadsfa
 
-    alert("That is not a valid value!") //insert code here that would loop to prompt again
+  if (newside<=100 && newside>=1) { //if input is bewteen 1 and 100, generate a new grid in the same space.
+    const allDiv=document.querySelectorAll(".box");
+    allDiv.forEach((allDiv) => {
+      allDiv.remove();
+    })
   }
-}
+  }
 
-//after we remove the grid, call createGrid()
-
+//After the grid is removed, generate a new grid in the same area with the createGrid function.
 const Button = document.querySelector("#new-grid")
 Button.addEventListener("click", () => {
   deleteGrid();
-  createGrid(newside)
+  createGrid(newside);
 })
