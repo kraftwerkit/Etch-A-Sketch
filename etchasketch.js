@@ -11,7 +11,7 @@ function createGrid(side) {
    //Why does the event listener need to be here?
 }
   var boxes = SketchArea.querySelectorAll("div")
-  boxes.forEach(box => box.addEventListener("mouseover",pixel)) //for each div, add event listener.
+  boxes.forEach(box => box.addEventListener("mouseover",pixel)) //for each div, add event listener
 }
 
 createGrid(16) //Call the function, generate a 16x16 grid by default.
@@ -27,9 +27,9 @@ function rainbow() {
 const pretty = ["#ffadad",  "#ffd6a5",  "#fdffb6",  "#caffbf",  
 "#9bf6ff",  "#a0c4ff",  "#bdb2ff","#ffc6ff"]
 
-//Generates a == pixelated trail
+//Generates a pixelated trail
 function pixel(e) {
-  e.target.style.backgroundColor="black";
+  e.target.style.backgroundColor="black"; //replaced this with e.target
   }
 //Function to delete existing grid//
 function deleteGrid() {
@@ -69,6 +69,15 @@ function setColor(color) {
     else if (color=="rainbow") {
       e.target.style.backgroundColor=rainbow();
     }
+    else if (color=="gray") { //this still doesn't work.
+      e.target.style.backgroundColor = "black";
+      console.log(e.target.style.opacity)
+      if (e.target.style.opacity <= 0.9) {
+        e.target.style.opacity = +e.target.style.opacity+0.1;
+    }}
+   else if (color=="favorite") {
+    e.target.style.backgroundColor= favorite.value
+   }
     else {
       e.target.style.backgroundColor="white";
     }
@@ -99,6 +108,14 @@ Rainbow.addEventListener("click", () => {
   setColor(color);
 } )
 
+// Gray //
+const Gray = document.querySelector("#gray")
+
+Gray.addEventListener("click", () => {
+  let color = "gray"
+  setColor(color);
+} )
+
 
 //Clear //
 const Clear = document.querySelector("#clear")
@@ -110,7 +127,10 @@ function clear() {
   divs.forEach(div => div.style.backgroundColor="white")
 }
 
-// Experimenting with gray shading/opacity
-function grey(e) {
-  e.target.style.backgroundColor="rgb(2, 0, 100, 0.5)"
-}
+// Favorite Color 
+
+const favorite = document.querySelector("#favcolor");
+
+favorite.addEventListener("click", () => {
+  let color = "favorite"
+  setColor(color);})
