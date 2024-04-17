@@ -50,7 +50,8 @@ function deleteGrid() {
       allDiv.remove();
     })
   }
-  }
+}
+
 
 //After the grid is removed, generate a new grid in the same area with the createGrid function.
 const Button = document.querySelector("#new-grid")
@@ -65,21 +66,26 @@ function setColor(color) {
   divs.forEach(div => div.addEventListener("mouseover", (e)=> {
     if (color =="black") {
       e.target.style.backgroundColor="black";
+      div.classList.add("opacity")
     }
     else if (color=="rainbow") {
       e.target.style.backgroundColor=rainbow();
+      div.classList.add("opacity")
     }
     else if (color=="gray") { //this still doesn't work.
       e.target.style.backgroundColor = "black";
       console.log(e.target.style.opacity)
-      if (e.target.style.opacity <= 0.9) {
+      div.classList.add("gray")
+      if (e.target.style.opacity <= 0.9 && div.classList("gray")) {
         e.target.style.opacity = +e.target.style.opacity+0.1;
     }}
    else if (color=="favorite") {
     e.target.style.backgroundColor= favorite.value
+    div.classList.add("opacity")
    }
     else {
       e.target.style.backgroundColor="white";
+      div.classList.add("opacity")
     }
   }))
 }

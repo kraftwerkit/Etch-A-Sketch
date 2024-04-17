@@ -1,12 +1,14 @@
 #sketch-area {
     display: flex;
     flex-wrap:wrap;
-    margin: 100px auto;
+    margin: auto;
     border: whitesmoke solid 1px;
     width: 600px;
     height: 600px;
     background-color: white;
     box-shadow: 10px 10px rgba(0,170,255,0.034);
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 
@@ -18,18 +20,41 @@ h1 {
     text-align:center;
     color: rosybrown;
     font-size: 40px;
+    width: 600px;
+    margin:auto;
 }
 
 body {
     background-color:lavenderblush;
 }
 
-#new-grid { 
+#new-grid{ 
     display: flex;
-    margin:auto;
     border-radius: 8px;
     padding: 5px 10px;
+    margin: auto;
     color: lavenderblush;
     background-color: rosybrown;
     border-color: whitesmoke;
+    margin-top: 30px;
     }
+
+#button-menu {
+    display: flex;
+    justify-content: space-between;
+    width:600px;
+    margin: auto;
+}
+
+.button  {
+    border-radius: 8px;
+    color: lavenderblush;
+    background-color: rosybrown;
+    border-color: whitesmoke;
+}
+
+input {
+    background-color: rosybrown;
+    border: none;
+
+}
