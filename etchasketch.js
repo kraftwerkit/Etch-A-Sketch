@@ -31,61 +31,28 @@ const pretty = ["#ffadad",  "#ffd6a5",  "#fdffb6",  "#caffbf",
 function pixel(e) {
   e.target.style.backgroundColor="black"; //replaced this with e.target
   }
-//Function to delete existing grid//
-function deleteGrid() {
-  do {
-    newside = +(Math.floor((prompt("Enter a number between 1 and 100", 16)))); //convert to number
-  } while (((newside>100 || newside <1) && newside) || (isNaN(newside)==true || newside===0) && newside==null);
-  console.log(typeof newside)
-  console.log(isNaN(newside))
-  // Loop runs when content evaluates to TRUE.
-  // && num to break the loop if user gives non zero input.
-  // num==0 to return true if the user inputs 0 FALSE || TRUE evaluates to TRUE.
-  // Check && num is false when num is null (cancel) or an empty string. Stops the while loop.
-  // I still need to account for weird strings like agkhldfadsf and the number 0.
 
-  if (newside<=100 && newside>=1) { //if input is bewteen 1 and 100, generate a new grid in the same space.
-    const allDiv=document.querySelectorAll(".box");
-    allDiv.forEach((allDiv) => {
-      allDiv.remove();
-    })
-  }
-}
-
-
-//After the grid is removed, generate a new grid in the same area with the createGrid function.
-const Button = document.querySelector("#new-grid")
-Button.addEventListener("click", () => {
-  deleteGrid();
-  createGrid(newside);
-})
-
-//Set Color Functionm used when you click a color button //
+//Set Color Function used when you click a color button //
 function setColor(color) {
   const divs = document.querySelectorAll(".box")
   divs.forEach(div => div.addEventListener("mouseover", (e)=> {
     if (color =="black") {
       e.target.style.backgroundColor="black";
-      div.classList.add("opacity")
     }
     else if (color=="rainbow") {
       e.target.style.backgroundColor=rainbow();
-      div.classList.add("opacity")
     }
-    else if (color=="gray") { //this still doesn't work.
+    else if (color=="gray") { //this still doesn't work//
       e.target.style.backgroundColor = "black";
       console.log(e.target.style.opacity)
-      div.classList.add("gray")
-      if (e.target.style.opacity <= 0.9 && div.classList("gray")) {
+      if (e.target.style.opacity <= 0.9) {
         e.target.style.opacity = +e.target.style.opacity+0.1;
     }}
    else if (color=="favorite") {
     e.target.style.backgroundColor= favorite.value
-    div.classList.add("opacity")
    }
     else {
       e.target.style.backgroundColor="white";
-      div.classList.add("opacity")
     }
   }))
 }
@@ -140,3 +107,25 @@ const favorite = document.querySelector("#favcolor");
 favorite.addEventListener("click", () => {
   let color = "favorite"
   setColor(color);})
+
+//Slider to create new grid//
+var slider = document.querySelector(".slider");
+var output = document.querySelector("#slider-value");
+output.innerHTML = slider.value + "x" + slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value + "x" + this.value;}
+
+  slider.addEventListener("mouseup", () => {
+    deletethegrid();
+    createGrid(slider.value)
+  })
+
+
+  // Removes Grid //
+  function deletethegrid() {
+      const allDiv=document.querySelectorAll(".box");
+      allDiv.forEach((allDiv) => {
+        allDiv.remove();
+      })
+    }
